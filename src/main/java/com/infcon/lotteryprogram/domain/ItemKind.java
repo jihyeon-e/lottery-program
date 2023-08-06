@@ -14,7 +14,7 @@ public enum ItemKind {
     CUP_COASTER("컵코스터"),
     VOIDELLA("보이델라"),
     GRIP_TOK("그립톡"),
-    AIR_POD("에어팟");
+    AIR_POD("에어팟 프로2");
 
     private final String value;
 

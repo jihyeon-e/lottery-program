@@ -65,4 +65,15 @@ public class ItemService {
 
         return totalAmount;
     }
+
+    @Transactional
+    public void addAirPodPro() {
+        Item item = itemReader.findById(6L).orElseThrow(null);
+
+        if(item.getUpdatedAt() != null) {
+            return;
+        }
+
+        item.updateAmount(1);
+    }
 }
