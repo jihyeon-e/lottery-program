@@ -18,11 +18,4 @@ public enum ItemKind {
 
     private final String value;
 
-    public static ItemKind from(final String kind) {
-        return Arrays.stream(ItemKind.values())
-            .filter(itemKind -> itemKind.getValue().equals(kind))
-            .findFirst()
-            .orElseThrow(IllegalArgumentException::new);
-    }
-
 }
