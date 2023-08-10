@@ -18,11 +18,24 @@ public class ItemService {
     public String getWinningItem() {
         List<Item> items = itemReader.findAll();
 
-        ItemKind winningItem = getWinningItem(items, getTotalAmount(items));
+        int totalAmount = getTotalAmount(items);
+
+        List<Item> itemsWithoutAirPods = items.stream()
+            .filter(item -> item.getKind() != ItemKind.AIR_POD)
+            .toList();
+
+        ItemKind winningItem = getItemKind(itemsWithoutAirPods, totalAmount);
 
         subtractItem(items, winningItem);
 
         return winningItem.getValue();
+    }
+
+    private ItemKind getItemKind(List<Item> items, int totalAmount) {
+        if (totalAmount == 673) {
+            return ItemKind.AIR_POD;
+        }
+        return getWinningItem(items, totalAmount);
     }
 
     private void subtractItem(List<Item> items, ItemKind winningItem) {
@@ -64,16 +77,5 @@ public class ItemService {
         }
 
         return totalAmount;
-    }
-
-    @Transactional
-    public void addAirPodPro() {
-        Item item = itemReader.findById(6L).orElseThrow(null);
-
-        if(item.getUpdatedAt() != null) {
-            return;
-        }
-
-        item.updateAmount(1);
     }
 }

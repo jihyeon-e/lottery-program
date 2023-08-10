@@ -3,7 +3,7 @@ spring:
     active: local
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://3.38.181.96:3306/infcon
+    url: jdbc:mysql://13.125.215.21:3306/infcon
     username: infcon
     password: infcon12#
   main:

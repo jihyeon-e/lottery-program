@@ -49,7 +49,4 @@ public class Item {
         this.amount -= 1;
     }
 
-    public void updateAmount(int i) {
-        this.amount = i;
-    }
 }
