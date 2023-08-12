@@ -1,11 +1,11 @@
-package com.infcon.lotteryprogram.infrastructure;
+package com.infcon.lotteryprogram.infrastructure.item;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.infcon.lotteryprogram.domain.Item;
-import com.infcon.lotteryprogram.domain.ItemReader;
+import com.infcon.lotteryprogram.domain.item.Item;
+import com.infcon.lotteryprogram.domain.item.ItemReader;
 
 import lombok.RequiredArgsConstructor;
 

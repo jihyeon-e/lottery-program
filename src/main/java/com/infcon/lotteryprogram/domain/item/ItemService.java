@@ -1,4 +1,4 @@
-package com.infcon.lotteryprogram.domain;
+package com.infcon.lotteryprogram.domain.item;
 
 import java.util.List;
 import java.util.Random;

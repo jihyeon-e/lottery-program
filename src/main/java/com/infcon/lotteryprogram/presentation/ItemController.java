@@ -3,7 +3,7 @@ package com.infcon.lotteryprogram.presentation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.infcon.lotteryprogram.domain.ItemService;
+import com.infcon.lotteryprogram.domain.item.ItemService;
 
 import lombok.RequiredArgsConstructor;
 
