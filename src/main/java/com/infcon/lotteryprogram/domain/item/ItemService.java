@@ -6,6 +6,9 @@ import java.util.Random;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.infcon.lotteryprogram.domain.target.TargetAmountReader;
+
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -13,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class ItemService {
 
     private final ItemReader itemReader;
+    private final TargetAmountReader targetAmountReader;
 
     @Transactional
     public String getWinningItem() {
@@ -32,10 +36,16 @@ public class ItemService {
     }
 
     private ItemKind getItemKind(List<Item> items, int totalAmount) {
-        if (totalAmount == 673) {
+        if (totalAmount == getTargetTotalAmount()) {
             return ItemKind.AIR_POD;
         }
         return getWinningItem(items, totalAmount);
+    }
+
+    private int getTargetTotalAmount() {
+        return targetAmountReader.findById(1L)
+            .orElseThrow(EntityNotFoundException::new)
+            .getAmount();
     }
 
     private void subtractItem(List<Item> items, ItemKind winningItem) {
