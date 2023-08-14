@@ -14,7 +14,7 @@ public class ItemController {
     private final ItemService itemService;
 
     @GetMapping("/api/winning/items")
-    public String getWinningItem() {
-        return itemService.getWinningItem();
+    public ItemResponseDto getWinningItem() {
+        return ItemResponseDto.of(itemService.getWinningItem());
     }
 }

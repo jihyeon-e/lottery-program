@@ -19,10 +19,12 @@ public class ItemService {
     private final TargetAmountReader targetAmountReader;
 
     @Transactional
-    public String getWinningItem() {
+    public ItemInfo getWinningItem() {
         List<Item> items = itemReader.findAll();
 
         int totalAmount = getTotalAmount(items);
+
+        boolean isLast = totalAmount == 1;
 
         List<Item> itemsWithoutAirPods = items.stream()
             .filter(item -> item.getKind() != ItemKind.AIR_POD)
@@ -32,7 +34,7 @@ public class ItemService {
 
         subtractItem(items, winningItem);
 
-        return winningItem.getValue();
+        return ItemInfo.of(isLast, winningItem.getValue());
     }
 
     private ItemKind getItemKind(List<Item> items, int totalAmount) {
